@@ -41,7 +41,7 @@ class ProductViewSet(viewsets.ViewSet):
                 {"message": "Product not found."}, status=status.HTTP_404_NOT_FOUND
             )
 
-    def delete(self, request, pk=None):
+    def destroy(self, request, pk=None):
         try:
             product = Product.objects.get(pk=pk)
             product.delete()
