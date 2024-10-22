@@ -1,0 +1,114 @@
+[
+    {
+        "model": "sharebearapi.size",
+        "pk": 1,
+        "fields": {
+            "size": "0-3 M"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 2,
+        "fields": {
+            "size": "3-6 M"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 3,
+        "fields": {
+            "size": "6-9 M"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 4,
+        "fields": {
+            "size": "9-12 M"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 5,
+        "fields": {
+            "size": "12-18 M"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 6,
+        "fields": {
+            "size": "18-24 M"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 7,
+        "fields": {
+            "size": "2T"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 8,
+        "fields": {
+            "size": "3T"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 9,
+        "fields": {
+            "size": "4T"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 10,
+        "fields": {
+            "size": "5T"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 11,
+        "fields": {
+            "size": "6T"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 12,
+        "fields": {
+            "size": "XS"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 13,
+        "fields": {
+            "size": "S"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 14,
+        "fields": {
+            "size": "M"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 15,
+        "fields": {
+            "size": "L"
+        }
+    },
+    {
+        "model": "sharebearapi.size",
+        "pk": 16,
+        "fields": {
+            "size": "XL"
+        }
+    }
+]

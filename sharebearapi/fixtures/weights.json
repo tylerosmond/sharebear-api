@@ -1,0 +1,79 @@
+[
+    {
+        "model": "sharebearapi.weight",
+        "pk": 1,
+        "fields": {
+            "weight": 0
+        }
+    },
+    {
+        "model": "sharebearapi.weight",
+        "pk": 2,
+        "fields": {
+            "weight": 10
+        }
+    },
+    {
+        "model": "sharebearapi.weight",
+        "pk": 3,
+        "fields": {
+            "weight": 20
+        }
+    },
+    {
+        "model": "sharebearapi.weight",
+        "pk": 4,
+        "fields": {
+            "weight": 30
+        }
+    },
+    {
+        "model": "sharebearapi.weight",
+        "pk": 5,
+        "fields": {
+            "weight": 40
+        }
+    },
+    {
+        "model": "sharebearapi.weight",
+        "pk": 6,
+        "fields": {
+            "weight": 50
+        }
+    },
+    {
+        "model": "sharebearapi.weight",
+        "pk": 7,
+        "fields": {
+            "weight": 60
+        }
+    },
+    {
+        "model": "sharebearapi.weight",
+        "pk": 8,
+        "fields": {
+            "weight": 70
+        }
+    },
+    {
+        "model": "sharebearapi.weight",
+        "pk": 9,
+        "fields": {
+            "weight": 80
+        }
+    },
+    {
+        "model": "sharebearapi.weight",
+        "pk": 10,
+        "fields": {
+            "weight": 90
+        }
+    },
+    {
+        "model": "sharebearapi.weight",
+        "pk": 11,
+        "fields": {
+            "weight": 100
+        }
+    }
+]

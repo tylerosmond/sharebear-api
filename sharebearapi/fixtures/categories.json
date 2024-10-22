@@ -1,0 +1,23 @@
+[
+    {
+        "model": "sharebearapi.category",
+        "pk": 1,
+        "fields": {
+            "name": "Toys"
+        }
+    },
+    {
+        "model": "sharebearapi.category",
+        "pk": 2,
+        "fields": {
+            "name": "Clothing"
+        }
+    },
+    {
+        "model": "sharebearapi.category",
+        "pk": 3,
+        "fields": {
+            "name": "Accessories"
+        }
+    }
+]
