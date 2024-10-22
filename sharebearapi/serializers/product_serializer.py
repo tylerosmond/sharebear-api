@@ -1,10 +1,10 @@
 from rest_framework import serializers
 from sharebearapi.models.product import Product
-from sharebearapi.serializers.category_serializer import CategorySerializer
-from sharebearapi.serializers.size_serializer import SizeSerializer
-from sharebearapi.serializers.age_serializer import AgeSerializer
-from sharebearapi.serializers.weight_serializer import WeightSerializer
-from sharebearapi.serializers.condition_serializer import ConditionSerializer
+from .category_serializer import CategorySerializer
+from .size_serializer import SizeSerializer
+from .age_serializer import AgeSerializer
+from .weight_serializer import WeightSerializer
+from .condition_serializer import ConditionSerializer
 
 
 class ProductSerializer(serializers.ModelSerializer):
