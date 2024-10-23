@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 from rest_framework import routers
 from sharebearapi.views import (
+    UserViewSet,
     CategoryViewSet,
     SizeViewSet,
     AgeViewSet,
@@ -23,4 +24,11 @@ router.register(r"products", ProductViewSet, basename="product")
 router.register(r"transactions", TransactionViewSet, basename="transaction")
 router.register(r"wishlist", WishlistViewSet, basename="wishlist")
 
-urlpatterns = [path("", include(router.urls)), path("admin/", admin.site.urls)]
+urlpatterns = [
+    path("", include(router.urls)),
+    path("login", UserViewSet.as_view({"post": "user_login"}), name="login"),
+    path(
+        "register", UserViewSet.as_view({"post": "register_account"}), name="register"
+    ),
+    path("admin/", admin.site.urls),
+]
