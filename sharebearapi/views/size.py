@@ -1,11 +1,8 @@
-from rest_framework import viewsets, status
-from rest_framework.response import Response
+from rest_framework import viewsets
 from sharebearapi.models import Size
 from sharebearapi.serializers import SizeSerializer
 
 
-class SizeViewSet(viewsets.ViewSet):
-    def list(self, request):
-        sizes = Size.objects.all()
-        serializer = SizeSerializer(sizes, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+class SizeViewSet(viewsets.ModelViewSet):
+    queryset = Size.objects.all()
+    serializer_class = SizeSerializer

@@ -19,6 +19,21 @@ class UserViewSet(viewsets.ViewSet):
     queryset = User.objects.all()
     permission_classes = [permissions.AllowAny]
 
+    def list(self, request):
+        users = User.objects.all()
+        serializer = UserSerializer(users, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    def retrieve(self, request, pk=None):
+        try:
+            user = User.objects.get(pk=pk)
+            serializer = UserSerializer(user)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except User.DoesNotExist:
+            return Response(
+                {"message": "User not found."}, status=status.HTTP_404_NOT_FOUND
+            )
+
     @action(detail=False, methods=["post"], url_path="register")
     def register_account(self, request):
         serializer = UserSerializer(data=request.data)

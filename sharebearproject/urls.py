@@ -23,6 +23,7 @@ router.register(r"conditions", ConditionViewSet, basename="condition")
 router.register(r"products", ProductViewSet, basename="product")
 router.register(r"transactions", TransactionViewSet, basename="transaction")
 router.register(r"wishlist", WishlistViewSet, basename="wishlist")
+router.register(r"users", UserViewSet, basename="user")
 
 urlpatterns = [
     path("", include(router.urls)),
