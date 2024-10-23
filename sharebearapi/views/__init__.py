@@ -6,3 +6,4 @@ from .size import SizeViewSet
 from .transaction import TransactionViewSet
 from .weight import WeightViewSet
 from .wishlist import WishlistViewSet
+from .users import UserViewSet

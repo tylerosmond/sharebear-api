@@ -1,0 +1,104 @@
+[
+    {
+        "model": "sharebearapi.product",
+        "pk": 1,
+        "fields": {
+            "owner": 1,
+            "name": "Teddy Bear",
+            "description": "A soft and cuddly teddy bear for kids.",
+            "status": "available",
+            "condition": 1,
+            "category": 1,
+            "size": null,
+            "min_age": 1,
+            "max_weight": null,
+            "product_img": null,
+            "created": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "sharebearapi.product",
+        "pk": 2,
+        "fields": {
+            "owner": 1,
+            "name": "Wooden Blocks",
+            "description": "Colorful wooden blocks for creative play.",
+            "status": "available",
+            "condition": 2,
+            "category": 1,
+            "size": null,
+            "min_age": 2,
+            "max_weight": null,
+            "product_img": null,
+            "created": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "sharebearapi.product",
+        "pk": 3,
+        "fields": {
+            "owner": 2,
+            "name": "Cotton T-shirt",
+            "description": "A comfortable cotton t-shirt for toddlers.",
+            "status": "available",
+            "condition": 1,
+            "category": 2,
+            "size": 1,
+            "min_age": null,
+            "max_weight": null,
+            "product_img": null,
+            "created": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "sharebearapi.product",
+        "pk": 4,
+        "fields": {
+            "owner": 2,
+            "name": "Denim Jacket",
+            "description": "A stylish denim jacket for kids.",
+            "status": "available",
+            "condition": 2,
+            "category": 2,
+            "size": 2,
+            "min_age": null,
+            "max_weight": null,
+            "product_img": null,
+            "created": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "sharebearapi.product",
+        "pk": 5,
+        "fields": {
+            "owner": 3,
+            "name": "Baby Diaper Bag",
+            "description": "A spacious diaper bag for all your baby needs.",
+            "status": "available",
+            "condition": 1,
+            "category": 3,
+            "size": null,
+            "min_age": null,
+            "max_weight": 10,
+            "product_img": null,
+            "created": "2024-10-22T10:00:00Z"
+        }
+    },
+    {
+        "model": "sharebearapi.product",
+        "pk": 6,
+        "fields": {
+            "owner": 3,
+            "name": "Baby Monitor",
+            "description": "A reliable baby monitor with video and audio.",
+            "status": "available",
+            "condition": 2,
+            "category": 3,
+            "size": null,
+            "min_age": null,
+            "max_weight": 5,
+            "product_img": null,
+            "created": "2024-10-22T10:00:00Z"
+        }
+    }
+]

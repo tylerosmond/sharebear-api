@@ -4,7 +4,7 @@ from sharebearapi.models import Transaction
 from sharebearapi.serializers import TransactionSerializer
 
 
-class TransactionViewSet(viewsets.Viewset):
+class TransactionViewSet(viewsets.ViewSet):
     def list(self, request):
         transactions = Transaction.objects.all()
         serializer = TransactionSerializer(transactions, many=True)
