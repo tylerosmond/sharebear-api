@@ -46,7 +46,9 @@ class UserViewSet(viewsets.ViewSet):
                 email=serializer.validated_data["email"],
             )
             token, created = Token.objects.get_or_create(user=user)
-            return Response({"token": token.key}, status=status.HTTP_201_CREATED)
+            return Response(
+                {"sharebear_token": token.key}, status=status.HTTP_201_CREATED
+            )
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @action(detail=False, methods=["post"], url_path="login")
@@ -58,7 +60,7 @@ class UserViewSet(viewsets.ViewSet):
 
         if user:
             token = Token.objects.get(user=user)
-            return Response({"token": token.key}, status=status.HTTP_200_OK)
+            return Response({"sharebear_token": token.key}, status=status.HTTP_200_OK)
         else:
             return Response(
                 {"error": "Invalid Credentials"}, status=status.HTTP_400_BAD_REQUEST
