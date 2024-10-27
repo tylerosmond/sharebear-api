@@ -14,12 +14,18 @@ from ..views.users import UserSerializer
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    category = CategorySerializer()
-    condition = ConditionSerializer()
-    size = SizeSerializer(allow_null=True)
-    min_age = AgeSerializer(allow_null=True)
-    max_weight = WeightSerializer(allow_null=True)
-    owner = UserSerializer()
+    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+    condition = serializers.PrimaryKeyRelatedField(queryset=Condition.objects.all())
+    size = serializers.PrimaryKeyRelatedField(
+        queryset=Size.objects.all(), allow_null=True, required=False
+    )
+    min_age = serializers.PrimaryKeyRelatedField(
+        queryset=Age.objects.all(), allow_null=True, required=False
+    )
+    max_weight = serializers.PrimaryKeyRelatedField(
+        queryset=Weight.objects.all(), allow_null=True, required=False
+    )
+    owner = UserSerializer(read_only=True)
 
     class Meta:
         model = Product
@@ -37,24 +43,22 @@ class ProductSerializer(serializers.ModelSerializer):
             "product_img",
             "created",
         ]
-        # Owner and status should be read-only
         read_only_fields = ["owner", "status", "created"]
 
     def create(self, validated_data):
-        # Automatically set the owner to the current user and status to 'available'
         validated_data["owner"] = self.context["request"].user
         validated_data["status"] = "available"
         return super().create(validated_data)
 
-    # # Use PrimaryKeyRelatedField to accept just the IDs of related models
-    # category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
-    # condition = serializers.PrimaryKeyRelatedField(queryset=Condition.objects.all())
-    # size = serializers.PrimaryKeyRelatedField(
-    #     queryset=Size.objects.all(), allow_null=True, required=False
-    # )
-    # min_age = serializers.PrimaryKeyRelatedField(
-    #     queryset=Age.objects.all(), allow_null=True, required=False
-    # )
-    # max_weight = serializers.PrimaryKeyRelatedField(
-    #     queryset=Weight.objects.all(), allow_null=True, required=False
-    # )
+    def to_representation(self, instance):
+        """Customize the output representation to include nested serializers."""
+        representation = super().to_representation(instance)
+        representation["category"] = CategorySerializer(instance.category).data
+        representation["condition"] = ConditionSerializer(instance.condition).data
+        if instance.size:
+            representation["size"] = SizeSerializer(instance.size).data
+        if instance.min_age:
+            representation["min_age"] = AgeSerializer(instance.min_age).data
+        if instance.max_weight:
+            representation["max_weight"] = WeightSerializer(instance.max_weight).data
+        return representation
