@@ -37,7 +37,22 @@ class UserViewSet(viewsets.ViewSet):
 
     @action(detail=False, methods=["post"], url_path="register")
     def register_account(self, request):
+        # Validate input data
         serializer = UserSerializer(data=request.data)
+
+        # Check if username already exists
+        if User.objects.filter(username=request.data.get("username")).exists():
+            return Response(
+                {"error": "Username already taken."}, status=status.HTTP_400_BAD_REQUEST
+            )
+
+        # Check if email already exists
+        if User.objects.filter(email=request.data.get("email")).exists():
+            return Response(
+                {"error": "Email already registered."},
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
         if serializer.is_valid():
             user = User.objects.create_user(
                 username=serializer.validated_data["username"],
@@ -50,6 +65,8 @@ class UserViewSet(viewsets.ViewSet):
             return Response(
                 {"sharebear_token": token.key}, status=status.HTTP_201_CREATED
             )
+
+        # Return any validation errors
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     @action(detail=False, methods=["post"], url_path="login")
@@ -61,7 +78,14 @@ class UserViewSet(viewsets.ViewSet):
 
         if user:
             token, created = Token.objects.get_or_create(user=user)
-            return Response({"sharebear_token": token.key}, status=status.HTTP_200_OK)
+            serializer = UserSerializer(user)  # Serialize the user data
+            return Response(
+                {
+                    "sharebear_token": token.key,
+                    "user": serializer.data,  # Include user data in the response
+                },
+                status=status.HTTP_200_OK,
+            )
         else:
             return Response(
                 {"error": "Invalid Credentials"}, status=status.HTTP_400_BAD_REQUEST
