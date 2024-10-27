@@ -3,6 +3,7 @@ from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework import serializers
 from rest_framework.authtoken.models import Token
+from rest_framework.permissions import IsAuthenticated
 
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate
@@ -59,9 +60,44 @@ class UserViewSet(viewsets.ViewSet):
         user = authenticate(username=username, password=password)
 
         if user:
-            token = Token.objects.get(user=user)
+            token, created = Token.objects.get_or_create(user=user)
             return Response({"sharebear_token": token.key}, status=status.HTTP_200_OK)
         else:
             return Response(
                 {"error": "Invalid Credentials"}, status=status.HTTP_400_BAD_REQUEST
             )
+
+    @action(detail=False, methods=["get"], permission_classes=[IsAuthenticated])
+    def profile(self, request):
+        if not request.user.is_authenticated:
+            return Response(
+                {"detail": "Authentication credentials were not provided."},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+
+        user = request.user
+        serializer = UserSerializer(user)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+    @action(detail=False, methods=["put"], permission_classes=[IsAuthenticated])
+    def update_profile(self, request):
+        # Check if user is authenticated
+        if not request.user.is_authenticated:
+            return Response(
+                {"detail": "Authentication credentials were not provided."},
+                status=status.HTTP_401_UNAUTHORIZED,
+            )
+
+        user = request.user
+        serializer = UserSerializer(user, data=request.data, partial=True)
+
+        if serializer.is_valid():
+            # Handle password update separately
+            if "password" in request.data:
+                user.set_password(request.data["password"])
+                user.save()
+            else:
+                serializer.save()
+            return Response(serializer.data, status=status.HTTP_200_OK)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
