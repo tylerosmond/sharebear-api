@@ -5,21 +5,21 @@ from sharebearapi.models.size import Size
 from sharebearapi.models.age import Age
 from sharebearapi.models.weight import Weight
 from sharebearapi.models.condition import Condition
+from .age_serializer import AgeSerializer
+from .category_serializer import CategorySerializer
+from .condition_serializer import ConditionSerializer
+from .size_serializer import SizeSerializer
+from .weight_serializer import WeightSerializer
+from ..views.users import UserSerializer
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    # Use PrimaryKeyRelatedField to accept just the IDs of related models
-    category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
-    condition = serializers.PrimaryKeyRelatedField(queryset=Condition.objects.all())
-    size = serializers.PrimaryKeyRelatedField(
-        queryset=Size.objects.all(), allow_null=True, required=False
-    )
-    min_age = serializers.PrimaryKeyRelatedField(
-        queryset=Age.objects.all(), allow_null=True, required=False
-    )
-    max_weight = serializers.PrimaryKeyRelatedField(
-        queryset=Weight.objects.all(), allow_null=True, required=False
-    )
+    category = CategorySerializer()
+    condition = ConditionSerializer()
+    size = SizeSerializer(allow_null=True)
+    min_age = AgeSerializer(allow_null=True)
+    max_weight = WeightSerializer(allow_null=True)
+    owner = UserSerializer()
 
     class Meta:
         model = Product
@@ -45,3 +45,16 @@ class ProductSerializer(serializers.ModelSerializer):
         validated_data["owner"] = self.context["request"].user
         validated_data["status"] = "available"
         return super().create(validated_data)
+
+    # # Use PrimaryKeyRelatedField to accept just the IDs of related models
+    # category = serializers.PrimaryKeyRelatedField(queryset=Category.objects.all())
+    # condition = serializers.PrimaryKeyRelatedField(queryset=Condition.objects.all())
+    # size = serializers.PrimaryKeyRelatedField(
+    #     queryset=Size.objects.all(), allow_null=True, required=False
+    # )
+    # min_age = serializers.PrimaryKeyRelatedField(
+    #     queryset=Age.objects.all(), allow_null=True, required=False
+    # )
+    # max_weight = serializers.PrimaryKeyRelatedField(
+    #     queryset=Weight.objects.all(), allow_null=True, required=False
+    # )
