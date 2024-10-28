@@ -62,8 +62,16 @@ class UserViewSet(viewsets.ViewSet):
                 email=serializer.validated_data["email"],
             )
             token, created = Token.objects.get_or_create(user=user)
+
+            # Serialize the newly created user
+            user_serializer = UserSerializer(user)
+
             return Response(
-                {"sharebear_token": token.key}, status=status.HTTP_201_CREATED
+                {
+                    "sharebear_token": token.key,
+                    "user": user_serializer.data,  # Include user data in the response
+                },
+                status=status.HTTP_201_CREATED,
             )
 
         # Return any validation errors
