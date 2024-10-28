@@ -12,7 +12,7 @@
             "size": null,
             "min_age": 1,
             "max_weight": null,
-            "product_img": null,
+            "product_img": "https://m.media-amazon.com/images/I/91gbfULvW0L._AC_UF894,1000_QL80_.jpg",
             "created": "2024-10-22T10:00:00Z"
         }
     },
@@ -29,7 +29,7 @@
             "size": null,
             "min_age": 2,
             "max_weight": null,
-            "product_img": null,
+            "product_img": "https://www.melissaanddoug.com/cdn/shop/files/2024-07-24.jpg?v=1721850204&width=750",
             "created": "2024-10-22T10:00:00Z"
         }
     },
@@ -46,7 +46,7 @@
             "size": 1,
             "min_age": null,
             "max_weight": null,
-            "product_img": null,
+            "product_img": "https://store.crooked.com/cdn/shop/products/CRK_web_product_toddlershirt_icantvotebutyoucan2-991593_1200x.jpg?v=1707492404",
             "created": "2024-10-22T10:00:00Z"
         }
     },
@@ -63,7 +63,7 @@
             "size": 2,
             "min_age": null,
             "max_weight": null,
-            "product_img": null,
+            "product_img": "https://target.scene7.com/is/image/Target/GUEST_ce201817-7e30-4ac8-8dca-f99ac94c4b1d?wid=488&hei=488&fmt=pjpeg",
             "created": "2024-10-22T10:00:00Z"
         }
     },
@@ -80,7 +80,7 @@
             "size": null,
             "min_age": null,
             "max_weight": 10,
-            "product_img": null,
+            "product_img": "https://keababies.com/cdn/shop/files/OriginalDiaperBag_TrendyBlack_Main_1A_1024x1024@2x.jpg?v=1699608077",
             "created": "2024-10-22T10:00:00Z"
         }
     },
@@ -97,7 +97,7 @@
             "size": null,
             "min_age": null,
             "max_weight": 5,
-            "product_img": null,
+            "product_img": "https://www.babysensemonitors.com/cdn/shop/products/new-hd-split-screen-video-baby-monitor-hd-s2-403686.jpg?v=1718525004",
             "created": "2024-10-22T10:00:00Z"
         }
     }
