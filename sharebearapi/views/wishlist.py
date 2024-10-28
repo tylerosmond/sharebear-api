@@ -1,13 +1,18 @@
 from rest_framework import viewsets, status
 from rest_framework.response import Response
 from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticated
 from sharebearapi.models import Wishlist, Product
 from sharebearapi.serializers import WishlistSerializer
 
 
 class WishlistViewSet(viewsets.ModelViewSet):
-    queryset = Wishlist.objects.all()
     serializer_class = WishlistSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+        # Only return wishlist items for the logged-in user
+        return Wishlist.objects.filter(user=self.request.user)
 
     def create(self, request):
         product_id = request.data.get("product_id")
